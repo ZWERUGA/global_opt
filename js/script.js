@@ -56,27 +56,34 @@ document.addEventListener("DOMContentLoaded", () => {
   nextReviewBtn.addEventListener("click", prevReview);
 
   let x1 = null;
+  let y1 = null;
 
   function handleTouchStart(e) {
     x1 = e.touches[0].clientX;
+    y1 = e.touches[0].clientY;
   }
 
   function handleTouchMove(e) {
-    if (!x1) {
+    if (!x1 || !y1) {
       return false;
     }
 
     const x2 = e.touches[0].clientX;
+    const y2 = e.touches[0].clientY;
 
     const xDiff = x2 - x1;
+    const yDiff = y2 - y1;
 
-    if (xDiff < 0) {
-      prevReview();
-    } else {
-      nextReview();
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      if (xDiff < 0) {
+        prevReview();
+      } else {
+        nextReview();
+      }
     }
 
     x1 = null;
+    y1 = null;
   }
 
   function handleWheel(e) {
@@ -91,11 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  reviewsItems.forEach((reviewItem) => {
-    reviewItem.addEventListener("touchstart", handleTouchStart, false);
-    reviewItem.addEventListener("touchmove", handleTouchMove, false);
-    reviewItem.addEventListener("wheel", handleWheel, false);
-  });
+  if (reviews.length > 1) {
+    reviewsItems.forEach((reviewItem) => {
+      reviewItem.addEventListener("touchstart", handleTouchStart, false);
+      reviewItem.addEventListener("touchmove", handleTouchMove, false);
+      reviewItem.addEventListener("wheel", handleWheel, false);
+    });
+  }
 
   const mediaQueryMobile = window.matchMedia("(max-width: 1000px)");
 
