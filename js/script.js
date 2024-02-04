@@ -36,31 +36,79 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevReviewBtn = reviewsWrapper.querySelector(".reviews__prev");
   const nextReviewBtn = reviewsWrapper.querySelector(".reviews__next");
   const reviewsInner = reviewsWrapper.querySelector(".reviews__inner");
+  const reviewsItems = reviewsInner.querySelectorAll(".reviews__item");
   let reviewIndex = 1;
   let offset = 0;
-  
-  reviewsInner.style.width = setInnerSize();
 
-  prevReviewBtn.addEventListener("click", () => {
-    if (reviewIndex == 0) {
-      return;
+  reviewsInner.style.maxWidth = setInnerSize();
+
+  if (reviews.length == 2) {
+    reviewsInner.style.transform = `translateX(${(offset -= 201.5)}px)`;
+    nextReviewBtn.style.display = "none";
+  }
+
+  if (reviews.length == 1) {
+    prevReviewBtn.style.display = "none";
+    nextReviewBtn.style.display = "none";
+  }
+
+  prevReviewBtn.addEventListener("click", nextReview);
+  nextReviewBtn.addEventListener("click", prevReview);
+
+  let x1 = null;
+
+  function handleTouchStart(e) {
+    x1 = e.touches[0].clientX;
+  }
+
+  function handleTouchMove(e) {
+    if (!x1) {
+      return false;
     }
 
-    changeReviewIndex(-1);
-    changeReview();
+    const x2 = e.touches[0].clientX;
 
-    reviewsInner.style.transform = `translateX(${(offset += 403)}px)`;
+    const xDiff = x2 - x1;
+
+    if (xDiff < 0) {
+      prevReview();
+    } else {
+      nextReview();
+    }
+
+    x1 = null;
+  }
+
+  function handleWheel(e) {
+    if (e.currentTarget.classList.contains("reviews__item_active")) {
+      e.preventDefault();
+
+      if (e.deltaY < 0) {
+        nextReview();
+      } else {
+        prevReview();
+      }
+    }
+  }
+
+  reviewsItems.forEach((reviewItem) => {
+    reviewItem.addEventListener("touchstart", handleTouchStart, false);
+    reviewItem.addEventListener("touchmove", handleTouchMove, false);
+    reviewItem.addEventListener("wheel", handleWheel, false);
   });
 
-  nextReviewBtn.addEventListener("click", () => {
-    if (reviewIndex == reviews.length - 1) {
-      return;
+  const mediaQueryMobile = window.matchMedia("(max-width: 1000px)");
+
+  mediaQueryMobile.addEventListener("change", (e) => {
+    if (e.matches) {
+      reviewsItems.forEach((reviewItem) => {
+        reviewItem.removeEventListener("wheel", handleWheel, false);
+      });
+    } else {
+      reviewsItems.forEach((reviewItem) => {
+        reviewItem.addEventListener("wheel", handleWheel, false);
+      });
     }
-
-    changeReviewIndex(1);
-    changeReview();
-
-    reviewsInner.style.transform = `translateX(${(offset -= 403)}px)`;
   });
 
   function setInnerSize() {
@@ -68,7 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const reviewsColumnGupWidth = (reviews.length - 1) * 45;
     const reviewActiveWidth = 606;
 
-    const resultWidth = reviewsNotActiveWidth + reviewsColumnGupWidth + reviewActiveWidth;
+    const resultWidth =
+      reviewsNotActiveWidth + reviewsColumnGupWidth + reviewActiveWidth;
 
     return `${resultWidth}px`;
   }
@@ -91,5 +140,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     reviews[reviewIndex].classList.add("reviews__item_active");
+  }
+
+  function nextReview() {
+    if (reviewIndex == 0) {
+      return;
+    }
+
+    changeReviewIndex(-1);
+    changeReview();
+
+    if (reviewIndex == 0) {
+      prevReviewBtn.style.display = "none";
+    }
+    nextReviewBtn.style.display = "flex";
+
+    reviewsInner.style.transform = `translateX(${(offset += 403)}px)`;
+  }
+
+  function prevReview() {
+    if (reviewIndex == reviews.length - 1) {
+      return;
+    }
+
+    changeReviewIndex(1);
+    changeReview();
+
+    if (reviewIndex == reviews.length - 1) {
+      nextReviewBtn.style.display = "none";
+    }
+    prevReviewBtn.style.display = "flex";
+
+    reviewsInner.style.transform = `translateX(${(offset -= 403)}px)`;
   }
 });
