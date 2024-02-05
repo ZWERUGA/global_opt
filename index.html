@@ -417,10 +417,12 @@
                     <img src="./img/agent/icons/agent.png" alt="Агент" />
                 </div>
                 <div class="feature__title">
-                    <h2 class="title title_white">Агент в Китае</h2>
+                    <h2 class="title title_white title_ttu">Агент в Китае</h2>
                 </div>
                 <div class="feature__subtitle">
-                    <div class="subtitle subtitle_white subtitle_fsz19">
+                    <div
+                        class="subtitle subtitle_white subtitle_lh27 subtitle_fsz19"
+                    >
                         Русскоговорящие представители компании без труда найдут
                         именно тот товар, который будет отвечать Вашим запросам
                         как по качеству, так и по цене.
@@ -568,10 +570,14 @@
                     <img src="./img/manager/icons/manager.png" alt="Менеджер" />
                 </div>
                 <div class="feature__title">
-                    <h2 class="title title_white">Менеджеры компании</h2>
+                    <h2 class="title title_white title_ttu">
+                        Менеджеры компании
+                    </h2>
                 </div>
                 <div class="feature__subtitle">
-                    <div class="subtitle subtitle_white subtitle_fsz19">
+                    <div
+                        class="subtitle subtitle_white subtitle_lh27 subtitle_fsz19"
+                    >
                         Подберут для Вас оптимальную схему грузоперевозки.
                         Проведут контроль закупок, организуют прямые поставки от
                         завода-изготовителя.
@@ -810,6 +816,79 @@
             </div>
         </section>
 
+        <section class="questions">
+            <div class="container">
+                <div class="questions__wrapper">
+                    <div class="questions__header">
+                        <div class="questions__title">
+                            <h2
+                                class="title title_lh18 title_fsz19 title_white"
+                            >
+                                Остались вопросы?
+                            </h2>
+                        </div>
+                        <div class="questions__subtitle">
+                            <h3
+                                class="subtitle subtitle_lh12 subtitle_white subtitle_fw400 subtitle_fsz14 subtitle_ttup"
+                            >
+                                Напишите нам!
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="questions__form">
+                        <form
+                            class="form form_questions form_row-gup6 form_white-inputs form_dark-border"
+                        >
+                            <input
+                                required
+                                autocomplete="off"
+                                name="name"
+                                type="text"
+                                placeholder="Ваше имя..."
+                            />
+                            <input
+                                required
+                                autocomplete="off"
+                                name="phone"
+                                type="text"
+                                placeholder="Ваш номер телефона..."
+                            />
+                            <input
+                                required
+                                autocomplete="off"
+                                name="email"
+                                type="email"
+                                placeholder="Ваш email..."
+                            />
+                            <textarea
+                                required
+                                name="message"
+                                placeholder="Сообщение..."
+                            ></textarea>
+                            <div class="form__button form__button_questions">
+                                <button class="btn">Отправить заявку</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map">
+            <div id="map"></div>
+            <div class="balloon" id="desktop-balloon">
+                <div class="item-title balloon__title">г. Москва</div>
+                <address class="item-descr balloon__address">
+                    ул. Садовническая, дом 5, офис 4-6 700 от м. Новокузнецкая
+                    <br />
+                    Тел: +7 (926) 423 01 00
+                </address>
+                <div class="balloon__link">
+                    <a href="#!">info@glopt.ru</a>
+                </div>
+            </div>
+        </section>
+
         <div class="overlay">
             <div class="mobile-nav">
                 <div class="close-btn">
@@ -839,6 +918,10 @@
             </div>
         </div>
 
+        <script
+            src="https://api-maps.yandex.ru/2.1/?apikey=b2449239-3e26-419f-9da5-9f8881c17a20&lang=ru_RU"
+            type="text/javascript"
+        ></script>
         <script src="js/script.js"></script>
     </body>
 </html>
