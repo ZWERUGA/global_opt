@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `,
         {
           closeButton: false,
-          offset: [15, -50]
+          offset: [15, -50],
         }
       );
     }
