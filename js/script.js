@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.querySelector(".overlay");
   const mobileOpenBtn = document.querySelector(".mobile-btn");
   const mobileCloseBtn = document.querySelector(".close-btn");
+  const mobileLinks = overlay.querySelectorAll(".mobile-nav__link");
+
+  mobileLinks.forEach((mobileLink) => {
+    mobileLink.addEventListener("click", () => {
+      close("overlay_active");
+    });
+  });
 
   mobileOpenBtn.addEventListener("click", () => {
     overlay.classList.add("overlay_active");

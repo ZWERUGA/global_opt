@@ -23,28 +23,32 @@
                     <nav class="promo__nav">
                         <ul class="promo__nav-list">
                             <li class="promo__nav-item">
-                                <a href="#!" class="promo__nav-link"
+                                <a href="#advantages" class="promo__nav-link"
                                     >Преимущества</a
                                 >
                             </li>
                             <li class="promo__nav-item">
-                                <a href="#!" class="promo__nav-link"
+                                <a href="#work" class="promo__nav-link"
                                     >Наша работа</a
                                 >
                             </li>
                             <li class="promo__nav-item">
-                                <a href="#!" class="promo__nav-link">Цены</a>
+                                <a href="#price" class="promo__nav-link"
+                                    >Цены</a
+                                >
                             </li>
                             <li class="promo__nav-item">
-                                <a href="#!" class="promo__nav-link"
+                                <a href="#scheme" class="promo__nav-link"
                                     >Схема работы</a
                                 >
                             </li>
                             <li class="promo__nav-item">
-                                <a href="#!" class="promo__nav-link">Отзывы</a>
+                                <a href="#reviews" class="promo__nav-link"
+                                    >Отзывы</a
+                                >
                             </li>
                             <li class="promo__nav-item">
-                                <a href="#!" class="promo__nav-link"
+                                <a href="#map" class="promo__nav-link"
                                     >Контакты</a
                                 >
                             </li>
@@ -127,7 +131,7 @@
             </div>
         </section>
 
-        <section class="advantages">
+        <section class="advantages" id="advantages">
             <div class="container">
                 <div class="advantages__title">
                     <h2 class="title">Преимущества работы с GlobalOpt</h2>
@@ -318,7 +322,7 @@
             </div>
         </section>
 
-        <section class="work">
+        <section class="work" id="work">
             <div class="container">
                 <div class="work__title">
                     <h2 class="title">
@@ -431,7 +435,7 @@
             </div>
         </section>
 
-        <section class="price">
+        <section class="price" id="price">
             <div class="container">
                 <div class="price__title">
                     <h2 class="title">Цены на любой вариант доставки</h2>
@@ -586,7 +590,7 @@
             </div>
         </section>
 
-        <section class="scheme">
+        <section class="scheme" id="scheme">
             <div class="container">
                 <div class="scheme__title">
                     <h2 class="title">Схема работы с нами</h2>
@@ -707,7 +711,7 @@
             </div>
         </section>
 
-        <section class="reviews">
+        <section class="reviews" id="reviews">
             <div class="container container_big">
                 <div class="reviews__title">
                     <h2 class="title">отзывы наших клиентов</h2>
@@ -889,35 +893,6 @@
             </div>
         </section>
 
-        <div class="overlay">
-            <div class="mobile-nav">
-                <div class="close-btn">
-                    <span></span>
-                    <span></span>
-                </div>
-                <ul class="mobile-nav__list">
-                    <li class="mobile-nav__item">
-                        <a href="#!" class="mobile-nav__link">Преимущества</a>
-                    </li>
-                    <li class="mobile-nav__item">
-                        <a href="#!" class="mobile-nav__link">Наша работа</a>
-                    </li>
-                    <li class="mobile-nav__item">
-                        <a href="#!" class="mobile-nav__link">Цены</a>
-                    </li>
-                    <li class="mobile-nav__item">
-                        <a href="#!" class="mobile-nav__link">Схема работы</a>
-                    </li>
-                    <li class="mobile-nav__item">
-                        <a href="#!" class="mobile-nav__link">Отзывы</a>
-                    </li>
-                    <li class="mobile-nav__item">
-                        <a href="#!" class="mobile-nav__link">Контакты</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
         <footer class="footer">
             <div class="container">
                 <div class="footer__header">
@@ -941,19 +916,50 @@
                 </div>
                 <hr />
                 <div class="footer__info">
-                    <div class="footer__info-author">
-                        © 2024 Marat Nasyrov
-                    </div>
+                    <div class="footer__info-author">© 2024 Marat Nasyrov</div>
                     <div class="footer__info-policy">
                         <a href="#!">Политика конфидециальности</a>
                     </div>
                     <div class="footer__info-create">
                         Создание сайта:
-                        <img src="./img/footer/site-create.png" alt="Логотип">
+                        <img src="./img/footer/site-create.png" alt="Логотип" />
                     </div>
                 </div>
             </div>
         </footer>
+
+        <div class="overlay">
+            <div class="mobile-nav">
+                <div class="close-btn">
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="mobile-nav__list">
+                    <li class="mobile-nav__item">
+                        <a href="#advantages" class="mobile-nav__link"
+                            >Преимущества</a
+                        >
+                    </li>
+                    <li class="mobile-nav__item">
+                        <a href="#work" class="mobile-nav__link">Наша работа</a>
+                    </li>
+                    <li class="mobile-nav__item">
+                        <a href="#price" class="mobile-nav__link">Цены</a>
+                    </li>
+                    <li class="mobile-nav__item">
+                        <a href="#scheme" class="mobile-nav__link"
+                            >Схема работы</a
+                        >
+                    </li>
+                    <li class="mobile-nav__item">
+                        <a href="#reviews" class="mobile-nav__link">Отзывы</a>
+                    </li>
+                    <li class="mobile-nav__item">
+                        <a href="#map" class="mobile-nav__link">Контакты</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
         <script
             src="https://api-maps.yandex.ru/2.1/?apikey=b2449239-3e26-419f-9da5-9f8881c17a20&lang=ru_RU"
