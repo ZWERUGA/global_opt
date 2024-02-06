@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const map = new ymaps.Map("map", {
       center: [55.74797656898648, 37.627220499999915],
       zoom: 17,
-      controls: ["zoomControl", "fullscreenControl"],
+      controls: ["zoomControl"],
     });
 
     const myPlacemark = new ymaps.Placemark(
