@@ -1,0 +1,30 @@
+.questions {
+  padding: 62px 0 89px;
+  background-image: url("./../img/questions/questions-bg.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &__wrapper {
+    padding: 0 clamp(0rem, -15.742rem + 32.796vw, 122px);
+  }
+  &__header {
+    min-height: 68px;
+    background-color: var(--dark-blue-ui-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__subtitle {
+    margin-top: 4px;
+  }
+  &__form {
+    padding: 0 5px;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    min-height: 228px;
+    textarea {
+      grid-column: 1 / 4;
+    }
+  }
+}

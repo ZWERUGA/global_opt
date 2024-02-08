@@ -1,0 +1,127 @@
+.promo {
+  padding: 23px 0 82px 0;
+  min-height: 680px;
+  background-image: url("../img/promo/promo-bg.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__header {
+    display: flex;
+  }
+  &__nav {
+    margin-top: 34px;
+    margin-left: 54px;
+    &-list {
+      display: flex;
+      column-gap: 27px;
+      font-size: 15px;
+    }
+    &-item {
+      position: relative;
+      &:not(:last-child) {
+        &:after {
+          content: "";
+          position: absolute;
+          right: -14px;
+          top: -2px;
+          height: 23px;
+          border-right: 1px dotted #858891;
+        }
+      }
+    }
+    &-link {
+      position: relative;
+      color: #fff;
+      transition: 0.2s all;
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        width: 100%;
+        height: 1px;
+        transition: 0.2s all;
+      }
+    }
+  }
+  &__content {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    &-button {
+      margin-top: 37px;
+      width: 230px;
+      height: 57px;
+    }
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: 300;
+  }
+  &__subtitle {
+    margin-top: 25px;
+    font-size: 42px;
+    font-family: "Roboto Condensed", serif;
+    line-height: 53px;
+    letter-spacing: -0.7px;
+    span {
+      font-size: 72px;
+      font-weight: 700;
+      color: var(--accent-color);
+      font-family: "Roboto Condensed", serif;
+      line-height: 55px;
+      letter-spacing: -1.5px;
+    }
+  }
+  &__divider {
+    position: relative;
+    margin-top: 31px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #fff;
+    &:before {
+      content: "";
+      position: absolute;
+      left: -400px;
+      top: 5px;
+      display: block;
+      height: 1px;
+      width: 389px;
+      background-color: #fff;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      left: 21px;
+      top: 5px;
+      display: block;
+      height: 1px;
+      width: 389px;
+      background-color: #fff;
+    }
+  }
+  &__wrapper {
+    margin-top: 35px;
+    display: flex;
+    column-gap: 33px;
+  }
+  &__item {
+    width: 260px;
+    &-img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+    }
+    &-descr {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 22px;
+    }
+  }
+}

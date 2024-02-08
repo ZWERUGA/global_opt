@@ -1,0 +1,120 @@
+.reviews {
+  padding: 51px 0 65px;
+  &__divider {
+    margin-top: 22px;
+  }
+  &__subtitle {
+    margin-top: 15px;
+  }
+  &__wrapper {
+    position: relative;
+    margin: 29px auto 0;
+    max-width: 1412px;
+    min-height: 246px;
+    overflow: hidden;
+    span {
+      display: block;
+      width: 25px;
+      height: 1px;
+      background-color: var(--accent-color);
+      transition: height 0.1s;
+    }
+  }
+  &__inner {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    column-gap: 45px;
+    transition: transform 0.5s;
+  }
+  &__item {
+    text-align: center;
+    min-width: 358px;
+    transition: min-width 0.5s;
+    &_active {
+      min-width: 606px;
+    }
+
+    &-img {
+      margin: 50px auto 0;
+      width: 70px;
+      height: 70px;
+      opacity: 0.3;
+      transition: opacity 0.5s, width 0.5s, height 0.5s, margin 0.5s;
+    }
+    &_active &-img {
+      margin: 0 auto 0;
+      width: 114px;
+      height: 114px;
+      opacity: 1;
+    }
+
+    &-title {
+      opacity: 0.3;
+      margin-top: 8px;
+      transition: opacity 0.5s, margin-top 0.5s;
+      .item-title {
+        font-size: 11px;
+        transition: font-size 0.5s;
+      }
+    }
+    &-descr {
+      opacity: 0.3;
+      margin-top: 2px;
+      transition: opacity 0.5s, margin-top 0.5s;
+      .item-descr {
+        width: 358px;
+        font-size: 9px;
+        line-height: 13px;
+        transition: width 0.05s, font-size 0.05s, line-height 0.5s;
+      }
+    }
+
+    &_active &-title {
+      opacity: 1;
+      margin-top: 17px;
+      .item-title {
+        font-size: 18px;
+      }
+    }
+    &_active &-descr {
+      opacity: 1;
+      margin-top: 5px;
+      .item-descr {
+        width: 606px;
+        font-size: 14px;
+        line-height: 22px;
+      }
+    }
+  }
+  &__prev,
+  &__next {
+    padding: 20px 10px;
+    position: absolute;
+    top: 25px;
+    height: 63px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    span.up {
+      transform: rotate(-59deg);
+    }
+    span.down {
+      transform: rotate(59deg);
+    }
+  }
+
+  &__prev {
+    left: calc(50% - 125px);
+  }
+
+  &__next {
+    right: calc(50% - 125px);
+    span.up {
+      transform: rotate(59deg);
+    }
+    span.down {
+      transform: rotate(-59deg);
+    }
+  }
+}

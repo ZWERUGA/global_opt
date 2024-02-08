@@ -1,0 +1,23 @@
+.feature {
+  padding: 58px 0 75px;
+  min-height: 342px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &_agent {
+    background-image: url("./../img/agent/agent-bg.jpg");
+  }
+  &_manager {
+    background-image: url("./../img/manager/manager-bg.jpg");
+  }
+  &__img {
+    margin: 0 auto;
+  }
+  &__title {
+    margin-top: 22px;
+  }
+  &__subtitle {
+    margin: 15px auto 0;
+    width: 984px;
+  }
+}

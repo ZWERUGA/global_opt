@@ -1,0 +1,32 @@
+.modal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  width: 500px;
+  background-color: var(--dark-blue-ui-color);
+  box-shadow: 0 0 5px #000;
+  visibility: hidden;
+  opacity: 0;
+  text-align: center;
+  transition: 0.4s all;
+  &__content {
+    text-align: center;
+    &-title {
+      color: var(--accent-color);
+      font-weight: 700;
+      font-size: 30px;
+    }
+    &-descr {
+      color: #fff;
+      margin-top: 10px;
+      font-size: 20px;
+    }
+  }
+  &__close {
+    margin-top: 20px;
+    width: 150px;
+    height: 40px;
+  }
+}

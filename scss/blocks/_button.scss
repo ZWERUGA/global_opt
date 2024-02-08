@@ -1,0 +1,39 @@
+.btn {
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 28px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+    transition: 0.2s all;
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 28px;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+    }
+    &_big {
+        font-size: 15px;
+        font-weight: 700;
+    }
+    svg {
+        display: none;
+        height: 50px;
+    }
+    &_loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span {
+            display: none;
+        }
+        svg {
+            display: block;
+            height: 50px;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+.consultation {
+  padding-top: 10px;
+  padding-bottom: 58px;
+  .title {
+    text-transform: initial;
+  }
+  &__form {
+    margin-top: 75px;
+    position: relative;
+    border: 1px solid #c4c4c4;
+    min-height: 166px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__img {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 10px 0;
+    background-color: #fff;
+  }
+  .img-round {
+    background-color: #fff;
+  }
+}

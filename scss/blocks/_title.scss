@@ -1,0 +1,25 @@
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 23px;
+  text-transform: uppercase;
+  text-align: center;
+  &_white {
+    color: #fff;
+  }
+  &_ttu {
+    text-transform: unset;
+  }
+  &_fw400 {
+    font-weight: 400;
+  }
+  &_fsz28 {
+    font-size: 28px;
+  }
+  &_fsz19 {
+    font-size: 19px;
+  }
+  &_lh18 {
+    line-height: 18px;
+  }
+}

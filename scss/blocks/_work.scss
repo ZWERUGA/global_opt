@@ -1,0 +1,32 @@
+.work {
+  padding: 51px 0 57px;
+  &__divider {
+    margin-top: 20px;
+  }
+  &__subtitle {
+    margin: 17px auto 0;
+    width: 879px;
+  }
+  &__wrapper {
+    margin-top: 37px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 29px;
+  }
+  &__item {
+    &-img {
+      height: 210px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &-title {
+      margin-top: 24px;
+    }
+    &-descr {
+      margin-top: 8px;
+    }
+  }
+}

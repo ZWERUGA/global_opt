@@ -1,0 +1,44 @@
+.footer {
+  padding: 24px 0 28px;
+  background-color: var(--dark-blue-ui-color);
+  &__header {
+    display: grid;
+    grid-template-columns: 68px 1fr 1fr;
+    align-items: center;
+    &-text {
+      margin-left: 43px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+    }
+  }
+
+  hr {
+    margin: 26px 0 19px;
+    height: 1px;
+    background-color: #677177;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 300;
+    &-author {
+      color: #a8adb1;
+    }
+    &-policy {
+      a {
+        color: var(--accent-color);
+        text-decoration: underline;
+      }
+    }
+    &-create {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      color: #a8adb1;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.item-title {
+  color: var(--accent-color);
+  font-size: 16px;
+  font-weight: 700;
+  &_center {
+    text-align: center;
+  }
+  &_fsz18 {
+    font-size: 18px;
+  }
+  &_black {
+    color: #000;
+  }
+}

@@ -60,7 +60,9 @@
                             <a href="tel:+79264230100">+7 (926) 423 01 00</a>
                         </div>
                         <div class="contacts__button">
-                            <button class="btn">Перезвоните мне</button>
+                            <button class="btn">
+                                <a href="tel:+79264230100">Перезвоните мне</a>
+                            </button>
                         </div>
                     </div>
                 </header>
@@ -125,7 +127,9 @@
                     </div>
 
                     <div class="promo__content-button">
-                        <button class="btn btn_big">Получить расчет</button>
+                        <button class="btn btn_big">
+                            <a href="#consultation">Получить расчет</a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -464,7 +468,9 @@
                             дней с прохождением таможни
                         </div>
                         <div class="price__item-button">
-                            <button class="btn">Подробнее</button>
+                            <button class="btn">
+                                <a href="#consultation">Подробнее</a>
+                            </button>
                         </div>
                     </div>
                     <div class="price__item">
@@ -481,7 +487,9 @@
                             прохождением таможни
                         </div>
                         <div class="price__item-button">
-                            <button class="btn">Подробнее</button>
+                            <button class="btn">
+                                <a href="#consultation">Подробнее</a>
+                            </button>
                         </div>
                     </div>
                     <div class="price__item">
@@ -498,7 +506,9 @@
                             прохождением таможни
                         </div>
                         <div class="price__item-button">
-                            <button class="btn">Подробнее</button>
+                            <button class="btn">
+                                <a href="#consultation">Подробнее</a>
+                            </button>
                         </div>
                     </div>
                     <div class="price__item">
@@ -515,14 +525,16 @@
                             прохождением таможни
                         </div>
                         <div class="price__item-button">
-                            <button class="btn">Подробнее</button>
+                            <button class="btn">
+                                <a href="#consultation">Подробнее</a>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="consultation">
+        <section class="consultation" id="consultation">
             <div class="container">
                 <div class="consultation__title">
                     <h2 class="title title_fsz28 title_fw400">
@@ -538,7 +550,7 @@
                             />
                         </div>
                     </div>
-                    <form class="form">
+                    <form class="form" id="form_consultation">
                         <input
                             required
                             autocomplete="off"
@@ -561,7 +573,36 @@
                             placeholder="Ваш email..."
                         />
                         <div class="form__button">
-                            <button class="btn">Отправить заявку</button>
+                            <button class="btn">
+                                <span>Отправить заявку</span>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 100 100"
+                                    preserveAspectRatio="xMidYMid"
+                                >
+                                    <path
+                                        fill="none"
+                                        stroke="white"
+                                        stroke-width="8"
+                                        stroke-dasharray="42.76482137044271 42.76482137044271"
+                                        d="M24.3 30C11.4 30 5 43.3 5 50s6.4 20 19.3 20c19.3 0 32.1-40 51.4-40 C88.6 30 95 43.3 95 50s-6.4 20-19.3 20C56.4 70 43.6 30 24.3 30z"
+                                        stroke-linecap="round"
+                                        style="
+                                            transform: scale(0.8);
+                                            transform-origin: 50px 50px;
+                                        "
+                                    >
+                                        <animate
+                                            attributeName="stroke-dashoffset"
+                                            repeatCount="indefinite"
+                                            dur="1s"
+                                            keyTimes="0;1"
+                                            values="0;256.58892822265625"
+                                        ></animate>
+                                    </path>
+                                </svg>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -841,6 +882,7 @@
                     </div>
                     <div class="questions__form">
                         <form
+                            id="form_questions"
                             class="form form_questions form_row-gup6 form_white-inputs form_dark-border"
                         >
                             <input
@@ -870,7 +912,36 @@
                                 placeholder="Сообщение..."
                             ></textarea>
                             <div class="form__button form__button_questions">
-                                <button class="btn">Отправить заявку</button>
+                                <button class="btn">
+                                    <span>Отправить заявку</span>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        viewBox="0 0 100 100"
+                                        preserveAspectRatio="xMidYMid"
+                                    >
+                                        <path
+                                            fill="none"
+                                            stroke="white"
+                                            stroke-width="8"
+                                            stroke-dasharray="42.76482137044271 42.76482137044271"
+                                            d="M24.3 30C11.4 30 5 43.3 5 50s6.4 20 19.3 20c19.3 0 32.1-40 51.4-40 C88.6 30 95 43.3 95 50s-6.4 20-19.3 20C56.4 70 43.6 30 24.3 30z"
+                                            stroke-linecap="round"
+                                            style="
+                                                transform: scale(0.8);
+                                                transform-origin: 50px 50px;
+                                            "
+                                        >
+                                            <animate
+                                                attributeName="stroke-dashoffset"
+                                                repeatCount="indefinite"
+                                                dur="1s"
+                                                keyTimes="0;1"
+                                                values="0;256.58892822265625"
+                                            ></animate>
+                                        </path>
+                                    </svg>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -888,7 +959,7 @@
                     Тел: +7 (926) 423 01 00
                 </address>
                 <div class="balloon__link">
-                    <a href="#!">info@glopt.ru</a>
+                    <a href="mailto:info@glopt.ru">info@glopt.ru</a>
                 </div>
             </div>
         </section>
@@ -910,7 +981,9 @@
                             <a href="tel:+79264230100">+7 (926) 423 01 00</a>
                         </div>
                         <div class="contacts__button">
-                            <button class="btn">Перезвоните мне</button>
+                            <button class="btn">
+                                <a href="tel:+79264230100">Перезвоните мне</a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -928,7 +1001,7 @@
             </div>
         </footer>
 
-        <div class="overlay">
+        <div class="overlay overlay_mobile">
             <div class="mobile-nav">
                 <div class="close-btn">
                     <span></span>
@@ -961,10 +1034,17 @@
             </div>
         </div>
 
+        <div class="overlay overlay_modal">
+            <div class="modal">
+                <div class="modal__content"></div>
+                <button class="btn modal__close">Закрыть</button>
+            </div>
+        </div>
+
         <script
             src="https://api-maps.yandex.ru/2.1/?apikey=b2449239-3e26-419f-9da5-9f8881c17a20&lang=ru_RU"
             type="text/javascript"
         ></script>
-        <script src="js/script.js"></script>
+        <script src="js/bundle.js"></script>
     </body>
 </html>

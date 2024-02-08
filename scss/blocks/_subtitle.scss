@@ -1,0 +1,28 @@
+.subtitle {
+  margin: 0 auto;
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 24px;
+  text-align: center;
+  &_fsz19 {
+    font-size: 19px;
+  }
+  &_lh27 {
+    line-height: 27px;
+  }
+  &_white {
+    color: #fff;
+  }
+  &_fw400 {
+    font-weight: 400;
+  }
+  &_fsz14 {
+    font-size: 14px;
+  }
+  &_lh12 {
+    line-height: 12px;
+  }
+  &_ttup {
+    text-transform: uppercase;
+  }
+}

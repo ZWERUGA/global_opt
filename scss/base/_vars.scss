@@ -1,0 +1,12 @@
+:root {
+  --accent-color: #ec644b;
+  --accent-dark-color: #b14a38;
+
+  --dark-blue-ui-color: #25333c;
+}
+
+@mixin laptop {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
