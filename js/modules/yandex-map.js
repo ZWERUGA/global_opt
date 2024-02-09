@@ -1,11 +1,19 @@
 function yandexMap(mapSelector, balloon, img) {
   // YANDEX MAP
   function init() {
-    const map = new ymaps.Map(mapSelector, {
-      center: [55.74797656898648, 37.627220499999915],
-      zoom: 17,
-      controls: ["zoomControl"],
-    });
+    const map = new ymaps.Map(
+      mapSelector,
+      {
+        center: [55.74797656898648, 37.627220499999915],
+        zoom: 17,
+        controls: ["zoomControl"],
+      },
+      {
+        yandexMapDisablePoiInteractivity: true,
+      }
+    );
+
+    map.options.yandexMapDisablePoiInteractivity = false;
 
     const myPlacemark = new ymaps.Placemark(
       map.getCenter(),
@@ -18,7 +26,13 @@ function yandexMap(mapSelector, balloon, img) {
     );
 
     map.geoObjects.add(myPlacemark);
-    map.behaviors.disable(["drag", "scrollZoom", "dblClickZoom", "multiTouch"]);
+    map.behaviors.disable([
+      "drag",
+      "scrollZoom",
+      "dblClickZoom",
+      "multiTouch",
+      "rightMouseButtonMagnifier",
+    ]);
 
     function closeDesktopBalloon() {
       document.querySelector(balloon).style.display = "none";

@@ -29,18 +29,17 @@ function forms(selector) {
       const formData = new FormData(form);
       const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
+      const formId = form.getAttribute("id");
+      const title =
+        formId === "form_consultation" ? titles.consultation : titles.questions;
+      const message =
+        formId === "form_consultation"
+          ? messages.successConsultation
+          : messages.successQuestions;
+
       postData("http://localhost:3000/requests", json)
         .then((data) => {
           console.log(data);
-          const formId = form.getAttribute("id");
-          const title =
-            formId === "form_consultation"
-              ? titles.consultation
-              : titles.questions;
-          const message =
-            formId === "form_consultation"
-              ? messages.successConsultation
-              : messages.successQuestions;
           showThanksModal(title, message);
           formSubmitBtn.classList.remove("btn_loading");
         })
@@ -49,6 +48,7 @@ function forms(selector) {
         })
         .finally(() => {
           form.reset();
+          formSubmitBtn.classList.remove("btn_loading");
         });
     });
   }

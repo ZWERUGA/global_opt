@@ -44,18 +44,17 @@ function forms(selector) {
       const formData = new FormData(form);
       const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
+      const formId = form.getAttribute("id");
+      const title =
+        formId === "form_consultation" ? titles.consultation : titles.questions;
+      const message =
+        formId === "form_consultation"
+          ? messages.successConsultation
+          : messages.successQuestions;
+
       (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.postData)("http://localhost:3000/requests", json)
         .then((data) => {
           console.log(data);
-          const formId = form.getAttribute("id");
-          const title =
-            formId === "form_consultation"
-              ? titles.consultation
-              : titles.questions;
-          const message =
-            formId === "form_consultation"
-              ? messages.successConsultation
-              : messages.successQuestions;
           showThanksModal(title, message);
           formSubmitBtn.classList.remove("btn_loading");
         })
@@ -64,6 +63,7 @@ function forms(selector) {
         })
         .finally(() => {
           form.reset();
+          formSubmitBtn.classList.remove("btn_loading");
         });
     });
   }
@@ -344,6 +344,66 @@ function reviewsSlider({
 
 /***/ }),
 
+/***/ "./js/modules/validators.js":
+/*!**********************************!*\
+  !*** ./js/modules/validators.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function validators() {
+  const forms = document.querySelectorAll("form");
+  let nameValid = false;
+  let phoneValid = false;
+  let emailValid = false;
+  let messageValid = false;
+
+  const nameRegexp = /([А-Я][а-я]+)$/i;
+  const phoneRegexp = /^((\+7|7|8)+([0-9]){10})$/;
+  const emailRegexp = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/;
+  const messageRegexp = /^([а-яА-Я0-9]+)$/i;
+
+  forms.forEach((form) => {
+    form.name.addEventListener("input", () =>
+      bindCheckInputValue(nameRegexp, form.name, nameValid)
+    );
+    form.phone.addEventListener("input", () =>
+      bindCheckInputValue(phoneRegexp, form.phone, phoneValid)
+    );
+    form.email.addEventListener("input", () =>
+      bindCheckInputValue(emailRegexp, form.email, emailValid)
+    );
+    if (form.message) {
+      form.message.addEventListener("input", () => {
+        bindCheckInputValue(messageRegexp, form.message, messageValid);
+      });
+    }
+  });
+
+  function bindCheckInputValue(regexp, input, validValue) {
+    if (regexp.test(input.value)) {
+      input.style.borderColor = "green";
+      validValue = true;
+    } else {
+      input.style.borderColor = "red";
+      validValue = false;
+    }
+
+    if (!input.value) {
+      input.style.borderColor = "#c4c4c4";
+      validValue = false;
+    }
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (validators);
+
+
+/***/ }),
+
 /***/ "./js/modules/yandex-map.js":
 /*!**********************************!*\
   !*** ./js/modules/yandex-map.js ***!
@@ -357,11 +417,19 @@ __webpack_require__.r(__webpack_exports__);
 function yandexMap(mapSelector, balloon, img) {
   // YANDEX MAP
   function init() {
-    const map = new ymaps.Map(mapSelector, {
-      center: [55.74797656898648, 37.627220499999915],
-      zoom: 17,
-      controls: ["zoomControl"],
-    });
+    const map = new ymaps.Map(
+      mapSelector,
+      {
+        center: [55.74797656898648, 37.627220499999915],
+        zoom: 17,
+        controls: ["zoomControl"],
+      },
+      {
+        yandexMapDisablePoiInteractivity: true,
+      }
+    );
+
+    map.options.yandexMapDisablePoiInteractivity = false;
 
     const myPlacemark = new ymaps.Placemark(
       map.getCenter(),
@@ -374,7 +442,13 @@ function yandexMap(mapSelector, balloon, img) {
     );
 
     map.geoObjects.add(myPlacemark);
-    map.behaviors.disable(["drag", "scrollZoom", "dblClickZoom", "multiTouch"]);
+    map.behaviors.disable([
+      "drag",
+      "scrollZoom",
+      "dblClickZoom",
+      "multiTouch",
+      "rightMouseButtonMagnifier",
+    ]);
 
     function closeDesktopBalloon() {
       document.querySelector(balloon).style.display = "none";
@@ -524,6 +598,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_reviews_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/reviews-slider */ "./js/modules/reviews-slider.js");
 /* harmony import */ var _modules_yandex_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/yandex-map */ "./js/modules/yandex-map.js");
 /* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/forms */ "./js/modules/forms.js");
+/* harmony import */ var _modules_validators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/validators */ "./js/modules/validators.js");
+
 
 
 
@@ -544,8 +620,8 @@ document.addEventListener("DOMContentLoaded", () => {
     activeClass: "reviews__item_active",
   });
   (0,_modules_yandex_map__WEBPACK_IMPORTED_MODULE_3__["default"])("map", "#desktop-balloon", "img/logo/logo-map.png");
-
   (0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])("form");
+  (0,_modules_validators__WEBPACK_IMPORTED_MODULE_5__["default"])();
 });
 
 })();

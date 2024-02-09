@@ -20,6 +20,7 @@
     &:focus {
       border-color: var(--accent-color);
     }
+    transition: border-color 0.4s;
   }
   &_white-inputs {
     input,
