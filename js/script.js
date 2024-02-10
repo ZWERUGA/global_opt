@@ -5,7 +5,6 @@ import modal from "./modules/modal";
 import reviewsSlider from "./modules/reviews-slider";
 import yandexMap from "./modules/yandex-map";
 import forms from "./modules/forms";
-import validators from "./modules/validators";
 
 document.addEventListener("DOMContentLoaded", () => {
   mobileNav(".overlay_mobile", ".mobile-btn", ".close-btn", "overlay_active");
@@ -20,5 +19,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   yandexMap("map", "#desktop-balloon", "img/logo/logo-map.png");
   forms("form");
-  validators();
 });

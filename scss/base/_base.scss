@@ -1,16 +1,23 @@
 * {
-  font-family: "Roboto", serif;
+    font-family: "Roboto", serif;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 .container {
-  max-width: 1140px;
-  margin: 0 auto;
+    max-width: 1140px;
+    margin: 0 auto;
 
-  &_big {
-    max-width: 1412px;
-  }
+    &_big {
+        max-width: 1412px;
+    }
 }
+
+// .error {
+//     border-color: red;
+// }
+// .success {
+//     border-color: green;
+// }

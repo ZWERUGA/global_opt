@@ -2,6 +2,76 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./js/modules/check-valid.js":
+/*!***********************************!*\
+  !*** ./js/modules/check-valid.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function checkValid(form) {
+  let nameValid = false;
+  let phoneValid = false;
+  let emailValid = false;
+  let messagesValid = false;
+
+  const nameRegexp = /([А-Я][а-я]+)$/i;
+  const phoneRegexp = /^((\+7|7|8)+([0-9]){10})$/;
+  const emailRegexp = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/;
+  const messageRegexp = /^([а-яА-Я0-9]+)$/i;
+
+  const inputs = form.querySelectorAll("input");
+
+  inputs.forEach((input) => {
+    if (input.name === "name") {
+      nameValid = getValid(nameRegexp, input.value, input);
+    } else if (input.name === "phone") {
+      phoneValid = getValid(phoneRegexp, input.value, input);
+    } else if (input.name === "email") {
+      emailValid = getValid(emailRegexp, input.value, input);
+    }
+  });
+
+  if (form.getAttribute("id") === "form_questions") {
+    const textarea = form.querySelector("textarea");
+    messagesValid = getValid(messageRegexp, textarea.value, textarea);
+  }
+
+  function getValid(regexp, value, input) {
+    if (regexp.test(value)) {
+      input.classList.remove("error");
+      input.classList.add("success");
+      return true;
+    }
+
+    input.classList.remove("success");
+    input.classList.add("error");
+    return false;
+  }
+
+  if (form.getAttribute("id") === "form_consultation") {
+    if (nameValid && phoneValid && emailValid) {
+      return true;
+    } else {
+      return false;
+    }
+  } else if (form.getAttribute("id") === "form_questions") {
+    if (nameValid && phoneValid && emailValid && messagesValid) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (checkValid);
+
+
+/***/ }),
+
 /***/ "./js/modules/forms.js":
 /*!*****************************!*\
   !*** ./js/modules/forms.js ***!
@@ -13,6 +83,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _services_services__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/services */ "./js/services/services.js");
+/* harmony import */ var _check_valid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./check-valid */ "./js/modules/check-valid.js");
+
 
 
 function forms(selector) {
@@ -38,33 +110,38 @@ function forms(selector) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const formSubmitBtn = form.querySelector(".btn");
-      formSubmitBtn.classList.add("btn_loading");
+      if ((0,_check_valid__WEBPACK_IMPORTED_MODULE_1__["default"])(form)) {
+        const formSubmitBtn = form.querySelector(".btn");
+        formSubmitBtn.classList.add("btn_loading");
 
-      const formData = new FormData(form);
-      const json = JSON.stringify(Object.fromEntries(formData.entries()));
+        const formData = new FormData(form);
+        const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-      const formId = form.getAttribute("id");
-      const title =
-        formId === "form_consultation" ? titles.consultation : titles.questions;
-      const message =
-        formId === "form_consultation"
-          ? messages.successConsultation
-          : messages.successQuestions;
+        const formId = form.getAttribute("id");
+        const title =
+          formId === "form_consultation"
+            ? titles.consultation
+            : titles.questions;
+        const message =
+          formId === "form_consultation"
+            ? messages.successConsultation
+            : messages.successQuestions;
 
-      (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.postData)("http://localhost:3000/requests", json)
-        .then((data) => {
-          console.log(data);
-          showThanksModal(title, message);
-          formSubmitBtn.classList.remove("btn_loading");
-        })
-        .catch(() => {
-          showThanksModal(title, messages.failure);
-        })
-        .finally(() => {
-          form.reset();
-          formSubmitBtn.classList.remove("btn_loading");
-        });
+        console.log("VALID");
+
+        (0,_services_services__WEBPACK_IMPORTED_MODULE_0__.postData)("http://localhost:3000/requests", json)
+          .then((data) => {
+            console.log(data);
+            showThanksModal(title, message);
+          })
+          .catch(() => {
+            showThanksModal(title, messages.failure);
+          })
+          .finally(() => {
+            form.reset();
+            defaultStyle(form);
+          });
+      }
     });
   }
 
@@ -83,6 +160,19 @@ function forms(selector) {
     `;
 
     overlayModal.classList.add("overlay_active");
+  }
+
+  function defaultStyle(form) {
+    form.querySelector(".btn").classList.remove("btn_loading");
+    const inputs = form.querySelectorAll("input");
+
+    inputs.forEach((input) => {
+      input.classList.remove("success")
+    });
+
+    if (form.getAttribute("id") === "form_questions") {
+      form.querySelector("textarea").classList.remove("success");
+    }
   }
 }
 
@@ -344,66 +434,6 @@ function reviewsSlider({
 
 /***/ }),
 
-/***/ "./js/modules/validators.js":
-/*!**********************************!*\
-  !*** ./js/modules/validators.js ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-function validators() {
-  const forms = document.querySelectorAll("form");
-  let nameValid = false;
-  let phoneValid = false;
-  let emailValid = false;
-  let messageValid = false;
-
-  const nameRegexp = /([А-Я][а-я]+)$/i;
-  const phoneRegexp = /^((\+7|7|8)+([0-9]){10})$/;
-  const emailRegexp = /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/;
-  const messageRegexp = /^([а-яА-Я0-9]+)$/i;
-
-  forms.forEach((form) => {
-    form.name.addEventListener("input", () =>
-      bindCheckInputValue(nameRegexp, form.name, nameValid)
-    );
-    form.phone.addEventListener("input", () =>
-      bindCheckInputValue(phoneRegexp, form.phone, phoneValid)
-    );
-    form.email.addEventListener("input", () =>
-      bindCheckInputValue(emailRegexp, form.email, emailValid)
-    );
-    if (form.message) {
-      form.message.addEventListener("input", () => {
-        bindCheckInputValue(messageRegexp, form.message, messageValid);
-      });
-    }
-  });
-
-  function bindCheckInputValue(regexp, input, validValue) {
-    if (regexp.test(input.value)) {
-      input.style.borderColor = "green";
-      validValue = true;
-    } else {
-      input.style.borderColor = "red";
-      validValue = false;
-    }
-
-    if (!input.value) {
-      input.style.borderColor = "#c4c4c4";
-      validValue = false;
-    }
-  }
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (validators);
-
-
-/***/ }),
-
 /***/ "./js/modules/yandex-map.js":
 /*!**********************************!*\
   !*** ./js/modules/yandex-map.js ***!
@@ -598,8 +628,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_reviews_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/reviews-slider */ "./js/modules/reviews-slider.js");
 /* harmony import */ var _modules_yandex_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/yandex-map */ "./js/modules/yandex-map.js");
 /* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/forms */ "./js/modules/forms.js");
-/* harmony import */ var _modules_validators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/validators */ "./js/modules/validators.js");
-
 
 
 
@@ -621,7 +649,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   (0,_modules_yandex_map__WEBPACK_IMPORTED_MODULE_3__["default"])("map", "#desktop-balloon", "img/logo/logo-map.png");
   (0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])("form");
-  (0,_modules_validators__WEBPACK_IMPORTED_MODULE_5__["default"])();
 });
 
 })();
