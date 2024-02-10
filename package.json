@@ -2,5 +2,8 @@
   "devDependencies": {
     "json-server": "^1.0.0-alpha.23",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "wow.js": "^1.2.2"
   }
 }
