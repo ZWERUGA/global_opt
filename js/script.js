@@ -21,24 +21,5 @@ document.addEventListener("DOMContentLoaded", () => {
   yandexMap("map", "#desktop-balloon", "img/logo/logo-map.png");
   forms("form");
 
-  const pageUpBtn = document.querySelector(".page-up");
-
-  pageUpBtn.addEventListener("click", () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  });
-
-  function scrollTop() {
-    if (
-      document.body.scrollTop > 1000 ||
-      document.documentElement.scrollTop > 1000
-    ) {
-      pageUpBtn.classList.add("page-up_active");
-    } else {
-      pageUpBtn.classList.remove("page-up_active");
-    }
-  }
-  window.addEventListener("scroll", scrollTop);
-
   new WOW().init();
 });

@@ -6,11 +6,12 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
-    position: relative;
-}
+// body {
+//     position: relative;
+// }
 
 .container {
+    position: relative;
     max-width: 1140px;
     margin: 0 auto;
 
