@@ -6,6 +6,10 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    position: relative;
+}
+
 .container {
     max-width: 1140px;
     margin: 0 auto;
@@ -14,10 +18,3 @@ html {
         max-width: 1412px;
     }
 }
-
-// .error {
-//     border-color: red;
-// }
-// .success {
-//     border-color: green;
-// }
